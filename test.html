@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>车辆出入记录</title>
+    <link rel="stylesheet" href="/static/bootstrap.css">
+
+</head>
+<body>
+   <div>
+      <table class="table table-striped">
+          <caption style="text-align:center;"><h3>查询到的记录</h3></caption>
+          <thead>
+              <tr>
+                  <th>序号</th>
+                  <th>车牌号</th>
+                  <th>进||出</th>
+                  <th>时间</th>
+                  <th>删除</th>
+
+              </tr>
+          </thead>
+          <tbody>
+              % for i in range(a):
+            　<tr id="{{i+1}}">
+                  <td>{{i+1}}</td>
+                　<td>{{platenumber_list[i]}}</td>
+                　<td>{{inorout_list[i]}}</td>
+                　<td>{{date_time_list[i]}}</td>
+                  <td><input type="button" value="删除" onclick="SingleDel();"></td>
+            　</tr>
+              % end
+          </tbody>
+      </table>
+   </div>
+    <script type="text/javascript">
+        function SingleDel()
+        {
+        var xmlhttp;
+        if (window.XMLHttpRequest)
+          {
+          xmlhttp=new XMLHttpRequest();
+          }
+        <!--else-->
+          <!--{// code for IE6, IE5-->
+          <!--xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");-->
+          <!--}-->
+        xmlhttp.onreadystatechange=function()
+          {
+          if (xmlhttp.readyState==4 && xmlhttp.status==200)
+            {
+
+            document.getElementById("{{i+1}}").innerHTML=xmlhttp.responseText;
+
+            }
+          }
+        xmlhttp.open("POST","/SingleDel",true);
+        xmlhttp.send();
+        }
+    </script>
+
+</body>
+</html>

@@ -1,6 +1,7 @@
 """
 This script runs the application using a development server.
 """
+# -*- coding:utf-8 -*-  
 
 import bottle
 from bottle import route, run, template, view

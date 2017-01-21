@@ -1,4 +1,5 @@
 # 2nd_Rep
+# coding=utf-8
 import sys
 import bottle, db, jinja2, time
 from db import testdb, testdb1, Arg
